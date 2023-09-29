@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import HeaderComp from './components/HeaderComp';
+import FooterComp from './components/FooterComp';
+import LandingPage from './pages/LandingPage';
 
 
 function App() {
@@ -8,6 +10,8 @@ function App() {
     <div className="App">
 
       <HeaderComp />
+      <LandingPage />
+      <FooterComp />
       
 
     </div>

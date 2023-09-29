@@ -41,7 +41,7 @@ export default function ColorInversionFooter() {
           variant="soft"
           size="sm"
           onClick={() => {
-            const colors = ['primary', 'neutral', 'danger', 'success', 'warning'];
+            const colors = ['primary'];
 
             const nextColor = colors.indexOf(color);
             setColor(colors[nextColor + 1] ?? colors[0]);
@@ -80,7 +80,10 @@ export default function ColorInversionFooter() {
           gap: 2,
         }}
       >
-        <Card
+        
+        {/* This is the first card in footer on the left */}
+        
+         <Card
           variant="soft"
           size="sm"
           sx={{
@@ -94,7 +97,7 @@ export default function ColorInversionFooter() {
             minHeight={80}
             sx={{ flexBasis: { xs: 200, md: 'initial' } }}
           >
-            <img alt="" src="/static/blog/mui-product-comparison/ecosystem.png" />
+            <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeajJ67uct_fhXgJRNXgu4ndmjUV2HeAF-g&usqp=CAU"/>
           </AspectRatio>
           <CardContent>
             <Typography level="body-sm">Intro to the MUI ecosystem</Typography>
@@ -102,7 +105,7 @@ export default function ColorInversionFooter() {
               MUI blog
             </Typography>
           </CardContent>
-        </Card>
+        </Card> 
         <List
           size="sm"
           orientation="horizontal"
