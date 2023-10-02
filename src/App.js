@@ -1,17 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import HeaderComp from './components/HeaderComp';
-import FooterComp from './components/FooterComp';
+import LandindFooter from './components/LandingFooter';
 import LandingPage from './pages/LandingPage';
+import LandingHeader from './components/LandingHeader';
+
 
 
 function App() {
   return (
     <div className="App">
 
-      <HeaderComp />
+      <LandingHeader />
       <LandingPage />
-      <FooterComp />
+      <LandindFooter />
       
 
     </div>
