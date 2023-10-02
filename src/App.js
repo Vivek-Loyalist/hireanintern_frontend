@@ -12,6 +12,7 @@ function App() {
       <LandingHeader />
       <LandingPage />
       <LandindFooter />
+      {/* changed  */}
       
 
     </div>
