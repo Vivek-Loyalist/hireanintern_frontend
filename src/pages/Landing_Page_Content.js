@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import figma from "../images/figma.png";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
-
+import { useNavigate } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Landing_Page_Conetnt() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1 }}>
       
@@ -30,23 +31,25 @@ export default function Landing_Page_Conetnt() {
         </Grid>
 
         {/* Text Grid */}
-        <Grid  item xs={7}>
-          <item>
-          <h1>HI! WE MAKE YOUR INTERN</h1>
-          <h1>MATCH</h1>
-          <h4>Unlock your Professional Journey</h4>
-          <h5>with Hire an Intern</h5>
-          </item>
-          
-
-          {/* Buttons in landing page */}
-
+        <Grid  style={{display:"flex", alignItems:"center"}}item xs={7}>
           <div>
-          <ButtonGroup variant="text" size="large" aria-label="text button group">
-              <Button>EMPLOYER</Button>
-              <Button>INTERN</Button>
-  
-          </ButtonGroup>
+            <item>
+            <h1>HI! WE MAKE YOUR INTERN</h1>
+            <h1>MATCH</h1>
+            <h4>Unlock your Professional Journey</h4>
+            <h5>with Hire an Intern</h5>
+            </item>
+            
+
+            {/* Buttons in landing page */}
+
+            <div>
+            <ButtonGroup variant="text" size="large" aria-label="text button group">
+                <Button  onClick={() => navigate('/login/employer')}>EMPLOYER</Button>
+                <Button onClick={()=>navigate('/login/intern')}>INTERN</Button>
+    
+            </ButtonGroup>
+            </div>
           </div>
         </Grid>
       </Grid>

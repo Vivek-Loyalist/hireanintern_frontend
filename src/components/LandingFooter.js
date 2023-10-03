@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import IconButton from '@mui/joy/IconButton';
@@ -21,14 +20,14 @@ import SendIcon from '@mui/icons-material/Send';
 import ColorLensRoundedIcon from '@mui/icons-material/ColorLensRounded';
 
 export default function ColorInversionFooter() {
-  const [color, setColor] = React.useState('neutral');
+  const [color, setColor] = React.useState('primary');
   return (
     <Sheet
       variant="solid"
       color={color}
       invertedColors
       sx={{
-        ...(color !== 'neutral' && {
+        ...(color !== 'primary' && {
           bgcolor: `${color}.800`,
         }),
         flexGrow: 1,
