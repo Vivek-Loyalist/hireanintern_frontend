@@ -17,7 +17,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Landing_Page_Conetnt() {
+
+  // To use navigate function
   const navigate = useNavigate();
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       
@@ -31,6 +34,7 @@ export default function Landing_Page_Conetnt() {
         </Grid>
 
         {/* Text Grid */}
+        
         <Grid  style={{display:"flex", alignItems:"center"}}item xs={7}>
           <div>
             <item>
