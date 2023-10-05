@@ -9,6 +9,9 @@ import Employer_Signup_Page from './pages/Employer_Signup_Page';
 import Intern_Signup_Page from './pages/Intern_Signup_Page';
 import Intern_Landing_Page from './pages/Intern_Landing_Page';
 import Intern_Dashboard from './pages/Intern_Dashboard';
+import Employer_Dashboard from './pages/Employer_Dashboard';
+import Post_Job_Form from './pages/Post_Job_Form';
+
 
 
 
@@ -52,7 +55,7 @@ function App() {
       ),
     },
 
-    // Route for EMployer Signup Page
+    // Route for Employer Signup Page
     {
       path: "/signup/employer",
       element: (
@@ -61,6 +64,20 @@ function App() {
     },
 
 
+    {
+      path: "/employer/dashboard",
+      element: (
+        <Employer_Dashboard />
+      ),
+    },
+
+      // Route for employer post a job
+    {
+      path: "/employer/postjob",
+      element: (
+        <Post_Job_Form />
+      ),
+    },
 
 
   ]);
@@ -71,13 +88,15 @@ function App() {
 
       <LandingHeader />
 
-          <RouterProvider router={router} />   
+            {/* <RouterProvider router={router} />     */}
+           {/* <Employer_Dashboard /> */}
+           {/* <Employer_Dashboard />
+           <Post_Job_Form /> */}
 
+           < Intern_Dashboard />
 
-        {/* <Intern_Dashboard />  */}
+           {/* < Intern_Landing_Page /> */}
 
-        {/* <Intern_Landing_Page />  */}
-      
 
       <LandindFooter />
      

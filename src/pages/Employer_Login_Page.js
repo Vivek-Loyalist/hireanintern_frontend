@@ -34,7 +34,14 @@ const defaultTheme = createTheme();
 
   
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const onSignin = () => {
+    //Write authentication code here
+    //  navigate("/employer/dashboard");
+    window.location.href="/employer/dashboard";
+    
+  }
 
 
   return (
@@ -99,7 +106,7 @@ const defaultTheme = createTheme();
                 label="Remember me"
               />
               <Button
-                type="submit"
+                onClick={onSignin}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
