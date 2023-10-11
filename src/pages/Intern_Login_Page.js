@@ -32,6 +32,7 @@ const defaultTheme = createTheme();
 // For navigation
   const navigate = useNavigate();
 
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -98,6 +99,8 @@ const defaultTheme = createTheme();
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={() => navigate("/intern/dashboard")}
+
               >
                 Sign In
               </Button>

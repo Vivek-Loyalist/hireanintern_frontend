@@ -31,17 +31,17 @@ const defaultTheme = createTheme();
     });
   };
 
-
+const navigate = useNavigate();
   
 
-  // const navigate = useNavigate();
+  // // const navigate = useNavigate();
 
-  const onSignin = () => {
-    //Write authentication code here
-    //  navigate("/employer/dashboard");
-    window.location.href="/employer/dashboard";
+  // const onSignin = () => {
+  //   //Write authentication code here
+  //   //  navigate("/employer/dashboard");
+  //   window.location.href="/employer/dashboard";
     
-  }
+  // }
 
 
   return (
@@ -105,14 +105,18 @@ const defaultTheme = createTheme();
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+
+
               <Button
-                onClick={onSignin}
+                onClick={() => navigate("/employer/dashboard")}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
               </Button>
+
+
               <Grid container>
                 <Grid item xs>
                   <Link href="http://localhost:3000/" variant="body2">

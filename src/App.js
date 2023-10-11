@@ -80,6 +80,14 @@ function App() {
       ),
     },
 
+    // Route to intern dashboard
+    {
+      path: "/intern/dashboard",
+      element: (
+        <Intern_Dashboard />
+      ),
+    },
+
 
   ]);
 
@@ -89,14 +97,15 @@ function App() {
 
       <LandingHeader />
 
-            {/* <RouterProvider router={router} />     */}
+            <RouterProvider router={router} />    
            {/* <Employer_Dashboard /> */}
            {/* <Employer_Dashboard />
            <Post_Job_Form /> */}
 
            {/* < Intern_Dashboard /> */}
 
-           < Apply_Job_Form />
+           {/* < Apply_Job_Form /> */}
+
 
            {/* < Intern_Landing_Page /> */}
 

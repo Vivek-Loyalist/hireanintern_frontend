@@ -60,9 +60,9 @@ const navigate = useNavigate();
                 <TextField
                   required
                   fullWidth
-                  id="fullName"
-                  label="full Name"
-                  name="fullName"
+                  id="first_name"
+                  label="First Name"
+                  name="first_name"
                   autoComplete="given-name"
                 />
               </Grid>
@@ -72,10 +72,10 @@ const navigate = useNavigate();
                 <TextField
                   required
                   fullWidth
-                  id="companyName"
-                  label="company Name"
-                  name="companyName"
-                  autoComplete="company-name"
+                  id="last_name"
+                  label=" Last Name"
+                  name="last_name"
+                  autoComplete="last-name"
                 />
               </Grid>
 

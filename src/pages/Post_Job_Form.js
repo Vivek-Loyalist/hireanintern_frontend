@@ -63,6 +63,18 @@ export default function SignUp() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
 
+
+            <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="job_tittle"
+                  label="Job Tittle"
+                  name="job_tittle"
+                  autoComplete="job_tittle"
+                />
+              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
