@@ -48,7 +48,11 @@ import { mockCardData } from "../Static_Data/Mock_Card_Data.js";
 
             <Typography level="title-lg">{card.company_name}</Typography>
 
-            <Typography level="title-lg">{card.job_title}</Typography>
+            {/* <Typography level="title-lg">{card.job_title}</Typography> */}
+
+            <Typography level="title-sm">{card.job_location}</Typography>
+
+            <Typography level="body-md">{card.job_description}</Typography>
 
             
             <Box

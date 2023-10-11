@@ -11,6 +11,7 @@ import Intern_Landing_Page from './pages/Intern_Landing_Page';
 import Intern_Dashboard from './pages/Intern_Dashboard';
 import Employer_Dashboard from './pages/Employer_Dashboard';
 import Post_Job_Form from './pages/Post_Job_Form';
+import Apply_Job_Form from './pages/Apply_Job_Form';
 
 
 
@@ -93,7 +94,9 @@ function App() {
            {/* <Employer_Dashboard />
            <Post_Job_Form /> */}
 
-           < Intern_Dashboard />
+           {/* < Intern_Dashboard /> */}
+
+           < Apply_Job_Form />
 
            {/* < Intern_Landing_Page /> */}
 
