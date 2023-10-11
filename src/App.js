@@ -88,6 +88,14 @@ function App() {
       ),
     },
 
+    // route to apply intern
+    {
+      path: "/intern/dashboard/applyjob",
+      element: (
+        <Apply_Job_Form />
+      ),
+    },
+
 
   ]);
 

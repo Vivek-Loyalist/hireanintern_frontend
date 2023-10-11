@@ -151,7 +151,7 @@ function Form() {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Post Job
+                            APPLY
                         </Button>
                     </Box>
                 </Box>

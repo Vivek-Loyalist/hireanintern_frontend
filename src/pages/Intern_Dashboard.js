@@ -12,9 +12,19 @@ import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
 import { mockCardData } from "../Static_Data/Mock_Card_Data.js";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 
  function BioCard() {
+
+  // for navigating pages
+
+  const navigate = useNavigate();
+
+
   return (
     <div style={{display: 'flex', justifyContent: 'space-around'}}>
     {mockCardData.data.map(card => {
@@ -44,11 +54,11 @@ import { mockCardData } from "../Static_Data/Mock_Card_Data.js";
               PRO
             </Chip>
 
-            <Typography level="title-lg">{card.job_id}</Typography>
+            {/* <Typography level="title-lg">{card.job_id}</Typography> */}
+
+            <Typography level="title-lg">{card.job_title}</Typography>
 
             <Typography level="title-lg">{card.company_name}</Typography>
-
-            {/* <Typography level="title-lg">{card.job_title}</Typography> */}
 
             <Typography level="title-sm">{card.job_location}</Typography>
 
@@ -133,7 +143,7 @@ import { mockCardData } from "../Static_Data/Mock_Card_Data.js";
             <CardActions buttonFlex="1">
               <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
                 <Button>Apply Later</Button>
-                <Button>Apply</Button>
+                <Button onClick={() => navigate("/intern/dashboard/applyjob")}>Apply</Button>
               </ButtonGroup>
             </CardActions>
           </CardOverflow>

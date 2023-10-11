@@ -123,81 +123,19 @@ export default function ColorInversionFooter() {
               <ListItem>
                 <ListItemButton>Contact us</ListItemButton>
               </ListItem>
-            </List>
-          </ListItem>
-          <ListItem nested sx={{ width: { xs: '50%', md: 180 } }}>
-            <ListSubheader>Product</ListSubheader>
-            <List sx={{ '--ListItemDecorator-size': '32px' }}>
               <ListItem>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <img
-                      alt=""
-                      src="/static/branding/product-core-dark.svg"
-                      width="24"
-                    />
-                  </ListItemDecorator>
-                  MUI Core
-                </ListItemButton>
+                <ListItemButton>Made with Love</ListItemButton>
               </ListItem>
               <ListItem>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <img
-                      alt=""
-                      src="/static/branding/product-advanced-dark.svg"
-                      width="24"
-                    />
-                  </ListItemDecorator>
-                  MUI X
-                </ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <img
-                      alt=""
-                      src="/static/branding/product-toolpad-dark.svg"
-                      width="24"
-                    />
-                  </ListItemDecorator>
-                  MUI Toolpad
-                  <Chip
-                    variant="soft"
-                    size="sm"
-                    sx={{ minHeight: 20, fontSize: 'xs2', ml: 'auto' }}
-                  >
-                    BETA
-                  </Chip>
-                </ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <img
-                      alt=""
-                      src="/static/branding/product-designkits-dark.svg"
-                      width="24"
-                    />
-                  </ListItemDecorator>
-                  Design kits
-                </ListItemButton>
-              </ListItem>
-              <ListItem>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <img
-                      alt=""
-                      src="/static/branding/product-templates-dark.svg"
-                      width="24"
-                    />
-                  </ListItemDecorator>
-                  Templates
-                </ListItemButton>
+                <ListItemButton> Team: Hire an intern</ListItemButton>
               </ListItem>
             </List>
           </ListItem>
-        </List>
+
+       </List>   
+              
+            
+          
       </Box>
     </Sheet>
   );
