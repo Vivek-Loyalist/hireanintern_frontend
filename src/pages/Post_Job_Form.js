@@ -30,6 +30,8 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
+
+
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,9 +42,16 @@ export default function SignUp() {
     });
   };
 
+
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    
+
+      <ThemeProvider theme={defaultTheme}>
+      
       <Container component="main" maxWidth="xs">
+      
+      
         <CssBaseline />
         <Box
           sx={{

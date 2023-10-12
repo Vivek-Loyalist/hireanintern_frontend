@@ -7,6 +7,10 @@ import figma from "../images/figma.png";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import GoogleIcon from '@mui/icons-material/Google';
+import  GitHubIcon from '@mui/icons-material/GitHub';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -15,6 +19,25 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
+
+
+const onButtonClickfacebook= () => {
+  return (
+    window.location.href = "https://www.facebook.com/"
+  )
+}
+
+const onButtonClickgmail= () => {
+  return (
+    window.location.href = "https://www.gmail.com/"
+  )
+}
+
+const onButtonClickgithub= () => {
+  return (
+    window.location.href = "https://www.github.com/"
+  )
+}
 
 export default function Landing_Page_Conetnt() {
 
@@ -51,8 +74,26 @@ export default function Landing_Page_Conetnt() {
             <ButtonGroup variant="text" size="large" aria-label="text button group">
                 <Button  onClick={() => navigate('/login/employer')}>EMPLOYER</Button>
                 <Button onClick={()=>navigate('/login/intern')}>INTERN</Button>
-    
             </ButtonGroup>
+
+
+            {/* Social media icons */}
+
+            <div>
+            <IconButton onClick={onButtonClickfacebook}variant="plain">
+                  <FacebookRoundedIcon /> 
+                </IconButton>
+
+
+                <IconButton  onClick={onButtonClickgmail}variant="plain">
+                  <GoogleIcon />  
+                </IconButton>
+
+
+                <IconButton onClick={onButtonClickgithub} variant="plain">
+                  <GitHubIcon />
+                </IconButton>
+              </div>
             </div>
           </div>
         </Grid>

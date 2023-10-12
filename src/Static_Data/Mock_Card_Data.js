@@ -2,6 +2,7 @@ export const  mockCardData = {
     data: [
         {
             job_id: 1,
+            job_title: "React Developer",
             company_name: "Tesla",
             job_location: "California",
             job_description: "React Developer",
@@ -9,6 +10,7 @@ export const  mockCardData = {
         },
         {
             job_id: 2,
+            job_title: "Node Developer",
             company_name: "Volvo",
             job_location: "California",
             job_description: "Node Developer",
@@ -16,6 +18,7 @@ export const  mockCardData = {
         },
         {
             job_id: 3,
+            job_title   : "IT Intern",
             company_name: "IBM",
             job_location: "California",
             job_title: "IT Intern",
@@ -24,6 +27,7 @@ export const  mockCardData = {
 
         {
             job_id: 3,
+            job_title   : "IT Intern",
             company_name: "Meta",
             job_location: "California",
             job_description: "IT Intern",
@@ -34,10 +38,16 @@ export const  mockCardData = {
 
         {
             job_id: 3,
+            job_title   : "IT Intern",
             company_name: "apple",
             job_location: "California",
             job_description: "Job Description Components. A job description contains the following components: job title, job purpose, job duties and responsibilities, required qualifications, preferred qualifications, and working conditions.",
             img: "data:image/jpeg;base64,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"
         },
+
+
+        
+
+
     ]
 }

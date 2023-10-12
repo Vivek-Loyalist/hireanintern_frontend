@@ -15,9 +15,11 @@ import ListItemButton from '@mui/joy/ListItemButton';
 import Typography from '@mui/joy/Typography';
 import Sheet from '@mui/joy/Sheet';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SendIcon from '@mui/icons-material/Send';
 import ColorLensRoundedIcon from '@mui/icons-material/ColorLensRounded';
+import { Google } from '@mui/icons-material';
 
 export default function ColorInversionFooter() {
   const [color, setColor] = React.useState('primary');
@@ -51,6 +53,9 @@ export default function ColorInversionFooter() {
         <Divider orientation="vertical" />
         <IconButton variant="plain">
           <FacebookRoundedIcon />
+        </IconButton>
+        <IconButton variant="plain">
+          <GoogleIcon />
         </IconButton>
         <IconButton variant="plain">
           <GitHubIcon />
