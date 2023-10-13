@@ -80,6 +80,7 @@ export default function Landing_Page_Conetnt() {
             {/* Social media icons */}
 
             <div>
+              
             <IconButton onClick={onButtonClickfacebook}variant="plain">
                   <FacebookRoundedIcon /> 
                 </IconButton>
@@ -93,6 +94,7 @@ export default function Landing_Page_Conetnt() {
                 <IconButton onClick={onButtonClickgithub} variant="plain">
                   <GitHubIcon />
                 </IconButton>
+
               </div>
             </div>
           </div>
