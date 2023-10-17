@@ -41,7 +41,6 @@ const defaultTheme = createTheme();
 
   const onSignUp = async () => {
     //Write authentication code here
-    // naviagte to intern dashboard.
     const data = {
       first_name: fullName,
       company_name: companyName,
@@ -89,8 +88,8 @@ const defaultTheme = createTheme();
                   id="fullName"
                   label="full Name"
                   name="fullName"
-                  onChange={(e) => setFullName(e.target.value)}
                   value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   autoComplete="given-name"
                 />
               </Grid>
@@ -162,6 +161,9 @@ const defaultTheme = createTheme();
         
       </Container>
     </ThemeProvider>
+
+    {/* to add alert message */}
+    
     <Snackbar open={sucessMsg} autoHideDuration={6000} >
     <Alert  severity="success" sx={{ width: '100%' }}>
       Employer Successfully Registered!
