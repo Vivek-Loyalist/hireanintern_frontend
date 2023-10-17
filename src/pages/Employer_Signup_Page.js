@@ -164,7 +164,7 @@ const defaultTheme = createTheme();
     </ThemeProvider>
     <Snackbar open={sucessMsg} autoHideDuration={6000} >
     <Alert  severity="success" sx={{ width: '100%' }}>
-      This is a success message!
+      Employer Successfully Registered!
     </Alert>
     </Snackbar>
     </>

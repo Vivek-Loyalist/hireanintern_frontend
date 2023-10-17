@@ -12,6 +12,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -19,6 +22,14 @@ import { useNavigate } from "react-router-dom";
 const defaultTheme = createTheme();
 
  function SignUp() {
+
+const [first_name, setFirstName] = React.useState('');
+const [last_name, setLastName] = React.useState('');
+const [email, setEmail] = React.useState("");
+const [password, setPassword] = React.useState("");
+const [sucessMsg, setSucessMsg] = React.useState(false);
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -29,12 +40,34 @@ const defaultTheme = createTheme();
   };
 
 
+  const onSignUp = async () => {
+    //Write authentication code here
+    // naviagte to intern dashboard.
+    const data = {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
+
+    }
+    try {
+      const response = await axios.post('http://localhost:4000/intern/register', data);
+      if (response.status === 201) {
+        setSucessMsg(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
 
 
 // For navigation
 const navigate = useNavigate();
 
   return (
+    <>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -63,6 +96,8 @@ const navigate = useNavigate();
                   id="first_name"
                   label="First Name"
                   name="first_name"
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
                   autoComplete="given-name"
                 />
               </Grid>
@@ -75,6 +110,8 @@ const navigate = useNavigate();
                   id="last_name"
                   label=" Last Name"
                   name="last_name"
+                  value={last_name}
+                  onChange={(e) => setLastName(e.target.value)}
                   autoComplete="last-name"
                 />
               </Grid>
@@ -87,6 +124,8 @@ const navigate = useNavigate();
                   id="email"
                   label="Email Address"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                 />
               </Grid>
@@ -98,6 +137,8 @@ const navigate = useNavigate();
                   label="Password"
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   autoComplete="new-password"
                 />
               </Grid>
@@ -109,7 +150,7 @@ const navigate = useNavigate();
               </Grid>
             </Grid>
             <Button
-              type="submit"
+            onClick={onSignUp}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -128,6 +169,13 @@ const navigate = useNavigate();
         
       </Container>
     </ThemeProvider>
+
+<Snackbar open={sucessMsg} autoHideDuration={6000} >
+<Alert  severity="success" sx={{ width: '100%' }}>
+  Intern Successfully Registered!
+</Alert>
+</Snackbar>
+</>
   );
 }
 export default SignUp;
