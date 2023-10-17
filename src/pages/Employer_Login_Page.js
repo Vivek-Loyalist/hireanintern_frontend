@@ -12,16 +12,22 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
-
-
-
+import axios from 'axios';
+import { on } from 'events';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
- function SignInSide() {
+function SignInSide() {
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [errorMsg, setErrorMsg] = React.useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -31,20 +37,34 @@ const defaultTheme = createTheme();
     });
   };
 
-const navigate = useNavigate();
-  
+  const navigate = useNavigate();
+
 
   // // const navigate = useNavigate();
 
-  // const onSignin = () => {
-  //   //Write authentication code here
-  //   //  navigate("/employer/dashboard");
-  //   window.location.href="/employer/dashboard";
-    
-  // }
+  const onSignin = async () => {
+    //Write authentication code here
+    //  navigate("/employer/dashboard");
+    const data = {
+      email: email,
+      password: password
+    }
+    try {
+      const response = await axios.post('http://localhost:4000/employer/login', data);
+      if (response.status === 200) {
+        navigate("/employer/dashboard");
+      }
+    } catch (error) {
+      setErrorMsg(true);
+      console.error(error);
+    }
+    // window.location.href="/employer/dashboard";
+
+  }
 
 
   return (
+    <>
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -57,7 +77,7 @@ const navigate = useNavigate();
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             // backgroundRepeat: 'no-repeat',
 
-            
+
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
@@ -75,7 +95,7 @@ const navigate = useNavigate();
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              
+
             </Avatar>
             <Typography component="h1" variant="h5">
               Employer Sign in
@@ -89,6 +109,8 @@ const navigate = useNavigate();
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 autoFocus
               />
               <TextField
@@ -99,6 +121,8 @@ const navigate = useNavigate();
                 label="Password"
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
               <FormControlLabel
@@ -108,7 +132,7 @@ const navigate = useNavigate();
 
 
               <Button
-                onClick={() => navigate("/employer/dashboard")}
+                onClick={() => onSignin()}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
@@ -137,17 +161,23 @@ const navigate = useNavigate();
         </Grid>
       </Grid>
     </ThemeProvider>
+      <Snackbar open={errorMsg} autoHideDuration={6000}>
+        <Alert severity="error" sx={{ width: '100%' }}>
+          Login Unsuccessful Check your details!
+        </Alert>
+      </Snackbar>
+      </>
   );
 }
 
 
-export  default function Employer_Login_Page(props) {
-    return (
-      <div className='App'>
-       <SignInSide />
-      </div>
-    )
-  }
+export default function Employer_Login_Page(props) {
+  return (
+    <div className='App'>
+      <SignInSide />
+    </div>
+  )
+}
 
 
 

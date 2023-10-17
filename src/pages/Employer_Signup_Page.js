@@ -11,6 +11,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -18,6 +21,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
  function SignUp() {
+
+
+  const [fullName, setFullName] = React.useState('');
+  const [companyName, setCompanyName] = React.useState('');
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [sucessMsg, setSucessMsg] = React.useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,7 +38,29 @@ const defaultTheme = createTheme();
     });
   };
 
+
+  const onSignUp = async () => {
+    //Write authentication code here
+    // naviagte to intern dashboard.
+    const data = {
+      first_name: fullName,
+      company_name: companyName,
+      email: email,
+      password: password,
+
+    }
+    try {
+      const response = await axios.post('http://localhost:4000/employer/register', data);
+      if (response.status === 201) {
+        setSucessMsg(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
+    <>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -56,6 +89,8 @@ const defaultTheme = createTheme();
                   id="fullName"
                   label="full Name"
                   name="fullName"
+                  onChange={(e) => setFullName(e.target.value)}
+                  value={fullName}
                   autoComplete="given-name"
                 />
               </Grid>
@@ -68,6 +103,8 @@ const defaultTheme = createTheme();
                   id="companyName"
                   label="company Name"
                   name="companyName"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
                   autoComplete="company-name"
                 />
               </Grid>
@@ -80,6 +117,8 @@ const defaultTheme = createTheme();
                   id="email"
                   label="Email Address"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                 />
               </Grid>
@@ -91,6 +130,8 @@ const defaultTheme = createTheme();
                   label="Password"
                   type="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   autoComplete="new-password"
                 />
               </Grid>
@@ -102,7 +143,7 @@ const defaultTheme = createTheme();
               </Grid>
             </Grid>
             <Button
-              type="submit"
+            onClick={() => {onSignUp()}}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
@@ -121,6 +162,12 @@ const defaultTheme = createTheme();
         
       </Container>
     </ThemeProvider>
+    <Snackbar open={sucessMsg} autoHideDuration={6000} >
+    <Alert  severity="success" sx={{ width: '100%' }}>
+      This is a success message!
+    </Alert>
+    </Snackbar>
+    </>
   );
 }
 export default SignUp;
