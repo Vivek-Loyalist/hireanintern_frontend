@@ -1,9 +1,6 @@
-
-
-
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -13,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Input } from '@mui/material';
+import Upload_Resume from '../S3_Upload/Upload_Resume';
 
 function Copyright(props) {
     return (
@@ -45,33 +43,28 @@ function Form() {
         });
     };
 
-    const onFileChange = event => {
+    
  
-        // Update the state
-        setSelectedFile(event.target.files[0]);
+    // // On file upload (click the upload button)
+    // const onFileUpload = () => {
  
-    };
+    //     // Create an object of formData
+    //     const formData = new FormData();
  
-    // On file upload (click the upload button)
-    const onFileUpload = () => {
- 
-        // Create an object of formData
-        const formData = new FormData();
- 
-        // Update the formData object
-        formData.append(
-            "myFile",
-            this.state.selectedFile,
-            this.state.selectedFile.name
-        );
+    //     // Update the formData object
+    //     formData.append(
+    //         "myFile",
+    //         this.state.selectedFile,
+    //         this.state.selectedFile.name
+    //     );
  
         // Details of the uploaded file
-        console.log(this.state.selectedFile);
+        // console.log(this.state.selectedFile);
  
         // Request made to the backend api
         // Send formData object
         // axios.post("api/uploadfile", formData);
-    };
+    // };
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -139,10 +132,10 @@ function Form() {
                         {/* Upload Button code below */}
 
                         <div>
-                            <Input type="file" onChange={onFileChange} />
-                            <Button onClick={onFileUpload}>
-                                Upload!
-                            </Button>
+                            {/* s3_Upload Code here */}
+
+                            <Upload_Resume />
+
                         </div>
 
                         <Button
@@ -159,7 +152,7 @@ function Form() {
             </Container>
         </ThemeProvider>
     );
-}
+                }
 
 export default function Apply_Job_Form() {
     return (
