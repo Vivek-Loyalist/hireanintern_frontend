@@ -11,8 +11,9 @@ import CardActions from '@mui/joy/CardActions';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
-import { mockCardData } from "../Static_Data/Mock_Card_Data.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { baseURL } from '../baseURL.js';
 
 
 
@@ -25,6 +26,22 @@ function BioCard() {
   const navigate = useNavigate();
 
 
+  // connecting to backend and call the api
+  const [jobs, setJobs] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(`${baseURL}/job/jobdetails`)
+      .then(res => {
+        console.log(res);
+        setJobs(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+  console.log(jobs);
+
+
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', alignItems: 'center', background: `url(https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80)`, // Replace 'your-image-url' with your actual image URL
@@ -32,7 +49,7 @@ function BioCard() {
       backgroundPosition: 'center',
       minHeight: '100vh',
     }}>
-      {mockCardData.data.map(card => {
+      {jobs && jobs.length>0 &&jobs.map(card => {
         return (
 
           <Card
@@ -43,9 +60,10 @@ function BioCard() {
               margin: '20px 0px',
               opacity: 0.7,
             }}
+            key={card.job_id}
           >
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-              <Avatar src={card.img} sx={{ '--Avatar-size': '4rem' }} />
+              <Avatar src={card.image_source} sx={{ '--Avatar-size': '4rem' }} />
               <Chip
                 size="sm"
                 variant="soft"
@@ -148,7 +166,7 @@ function BioCard() {
             <CardOverflow sx={{ bgcolor: 'background.level1' }}>
               <CardActions buttonFlex="1">
                 <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
-                  <Button>Apply Later</Button>
+                  {/* <Button>Apply Later</Button> */}
                   <Button onClick={() => navigate("/intern/dashboard/applyjob")}>Apply</Button>
                 </ButtonGroup>
               </CardActions>
@@ -161,6 +179,9 @@ function BioCard() {
 }
 
 export default BioCard;
+
+
+
 
 
 
