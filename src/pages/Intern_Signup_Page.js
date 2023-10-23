@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import { baseURL } from '../baseURL';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -51,7 +52,7 @@ const [sucessMsg, setSucessMsg] = React.useState(false);
 
     }
     try {
-      const response = await axios.post('http://localhost:4000/intern/register', data);
+      const response = await axios.post(`${baseURL}/intern/register`, data);
       if (response.status === 201) {
         setSucessMsg(true);
       }

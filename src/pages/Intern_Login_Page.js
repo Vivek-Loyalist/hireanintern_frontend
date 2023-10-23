@@ -16,6 +16,7 @@ import axios from 'axios';
 import { on } from 'events';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { baseURL } from '../baseURL';
 
 
 
@@ -54,7 +55,7 @@ function SignInSide() {
       password: password
     }
     try {
-      const response = await axios.post('http://localhost:4000/intern/login', data);
+      const response = await axios.post(`${baseURL}/intern/login`, data);
       if (response.status === 200) {
         // navigate("/intern/dashboard");
         window.location.href = "/intern/dashboard";

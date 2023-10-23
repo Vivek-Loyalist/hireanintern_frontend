@@ -13,9 +13,9 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { on } from 'events';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { baseURL } from '../baseURL';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -50,7 +50,7 @@ function SignInSide() {
       password: password
     }
     try {
-      const response = await axios.post('http://localhost:4000/employer/login', data);
+      const response = await axios.post(`${baseURL}/employer/login`, data);
       if (response.status === 200) {
         navigate("/employer/dashboard");
       }

@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+import { baseURL } from '../baseURL';
 
 
 function Copyright(props) {
@@ -63,7 +64,7 @@ export default function SignUp() {
       image_source:image_source,
     }
     try {
-      const response = await axios.post('http://localhost:4000/job/jobdetails', data);
+      const response = await axios.post(`${baseURL}/job/jobdetails`, data);
       if (response.status === 201) {
         setSucessMsg(true);
       }

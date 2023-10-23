@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Input } from '@mui/material';
 import Upload_Resume from '../S3_Upload/Upload_Resume';
+import axios from 'axios';
+import { baseURL } from "../baseURL";
 
 function Copyright(props) {
     return (
@@ -34,6 +36,9 @@ const defaultTheme = createTheme();
 
 function Form() {
     const [selectedFile, setSelectedFile] = React.useState(null);
+    const [full_name, setFull_name] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [phone_number, setPhone_number] = React.useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -43,7 +48,24 @@ function Form() {
         });
     };
 
-    
+    const onApplyJob = () => {
+        const data = {
+            full_name: full_name,
+            email: email,
+            phone_number: phone_number,
+            resume: selectedFile
+        }
+        axios.post(`${baseURL}/job/applyjob`, data)
+            .then(res => {
+                if(res.status === 201){
+                    alert("Applied Successfully")
+                    window.location.href = "/intern/dashboard"
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
  
     // // On file upload (click the upload button)
     // const onFileUpload = () => {
@@ -97,6 +119,8 @@ function Form() {
                                     label="Full Name "
                                     name="full_name"
                                     autoComplete="full_name"
+                                    value={full_name}
+                                    onChange={(e) => setFull_name(e.target.value)}
                                 />
                             </Grid>
 
@@ -110,6 +134,8 @@ function Form() {
                                     label="Email"
                                     name="email"
                                     autoComplete="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Grid>
 
@@ -121,6 +147,8 @@ function Form() {
                                     label="Phone Number"
                                     name="phone_number"
                                     autoComplete="phone_number"
+                                    value={phone_number}
+                                    onChange={(e) => setPhone_number(e.target.value)}
                                 />
                             </Grid>
 
@@ -143,6 +171,7 @@ function Form() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            onClick={onApplyJob}
                         >
                             APPLY
                         </Button>
