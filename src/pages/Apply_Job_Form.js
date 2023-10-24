@@ -9,10 +9,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Input } from '@mui/material';
 import Upload_Resume from '../S3_Upload/Upload_Resume';
 import axios from 'axios';
 import { baseURL } from "../baseURL";
+import { useParams } from "react-router-dom";
 
 function Copyright(props) {
     return (
@@ -35,29 +35,34 @@ const defaultTheme = createTheme();
 
 
 function Form() {
-    const [selectedFile, setSelectedFile] = React.useState(null);
+    // const [selectedFile, setSelectedFile] = React.useState(null);
     const [full_name, setFull_name] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [phone_number, setPhone_number] = React.useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        // const data = new FormData(event.currentTarget);
+        // console.log({
+        //     email: data.get('email'),
+        //     password: data.get('password'),
+        // });
     };
+
+    const { company_name } = useParams();
+
+    // console.log(company_name)
 
     const onApplyJob = () => {
         const data = {
             full_name: full_name,
             email: email,
             phone_number: phone_number,
-            resume: selectedFile
+            company_name: company_name,
+            // resume: selectedFile
         }
         axios.post(`${baseURL}/job/applyjob`, data)
             .then(res => {
-                if(res.status === 201){
+                if(res.status === 200){
                     alert("Applied Successfully")
                     window.location.href = "/intern/dashboard"
                 }
@@ -67,26 +72,7 @@ function Form() {
             })
     }
  
-    // // On file upload (click the upload button)
-    // const onFileUpload = () => {
- 
-    //     // Create an object of formData
-    //     const formData = new FormData();
- 
-    //     // Update the formData object
-    //     formData.append(
-    //         "myFile",
-    //         this.state.selectedFile,
-    //         this.state.selectedFile.name
-    //     );
- 
-        // Details of the uploaded file
-        // console.log(this.state.selectedFile);
- 
-        // Request made to the backend api
-        // Send formData object
-        // axios.post("api/uploadfile", formData);
-    // };
+    
 
     return (
         <ThemeProvider theme={defaultTheme}>

@@ -89,7 +89,7 @@ function App() {
 
     // route to apply intern
     {
-      path: "/intern/dashboard/applyjob",
+      path: "/intern/dashboard/applyjob/:company_name",
       element: (
         <Apply_Job_Form />
       ),

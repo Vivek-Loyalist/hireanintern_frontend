@@ -60,7 +60,7 @@ function BioCard() {
               margin: '20px 0px',
               opacity: 0.7,
             }}
-            key={card.job_id}
+            // key={card.job_id}
           >
             <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
               <Avatar src={card.image_source} sx={{ '--Avatar-size': '4rem' }} />
@@ -167,7 +167,7 @@ function BioCard() {
               <CardActions buttonFlex="1">
                 <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
                   {/* <Button>Apply Later</Button> */}
-                  <Button onClick={() => navigate("/intern/dashboard/applyjob")}>Apply</Button>
+                  <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}`)}>Apply</Button>
                 </ButtonGroup>
               </CardActions>
             </CardOverflow>
