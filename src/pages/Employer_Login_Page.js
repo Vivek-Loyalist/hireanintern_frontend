@@ -218,7 +218,7 @@ function SignInSide() {
     try {
       const response = await axios.post(`${baseURL}/employer/login`, data);
       if (response.status === 200) {
-        navigate('/employer/dashboard'); // Pass email as a route parameter
+        navigate(`/employer/dashboard/${email}`); // Pass email as a route parameter
 
         console.log(response.data.email);
       }

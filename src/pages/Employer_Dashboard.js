@@ -1,11 +1,11 @@
-// import * as React from 'react';
+// import React, { useEffect, useState } from 'react';
 // import { styled } from '@mui/material/styles';
 // import Box from '@mui/material/Box';
-// // import Grid from '@mui/material/Grid';
 // import Button from '@mui/material/Button';
 // import ButtonGroup from '@mui/material/ButtonGroup';
-// import { useNavigate } from "react-router-dom";
-// import videoSource from "../images/Indeed2.mp4";
+// import { useNavigate, useParams } from 'react-router-dom';
+// import videoSource from '../images/Indeed2.mp4';
+// import axios from 'axios';
 
 // const VideoBackground = styled(Box)(({ theme }) => ({
 //   position: 'relative',
@@ -27,18 +27,35 @@
 //   display: 'flex',
 //   alignItems: 'center',
 //   justifyContent: 'center',
-//   backgroundColor: 'rgba(0, 0, 0, 0.5)', // You can adjust the background color's transparency
+//   backgroundColor: 'rgba(0, 0, 0, 0.5)',
 //   height: '100%',
 //   color: '#fff',
 // }));
 
-// export default function Employer_Dashboard() {
+// export default function EmployerDashboard() {
 //   const navigate = useNavigate();
+//   const { email } = useParams();
+//   const [data, setData] = useState(null);
+
+//   useEffect(() => {
+//     console.log('Email that is passed from login page:', email);
+    
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get(`http://localhost:4000/job/company_name/${email}`);
+//         setData(response.data);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     };
+
+//     if (email) {
+//       fetchData();
+//     }
+//   }, [email]);
 
 //   return (
 //     <div>
-//       {/* <h1>Employer Dashboard</h1> */}
-
 //       <VideoBackground>
 //         <video autoPlay loop muted>
 //           <source src={videoSource} type="video/mp4" />
@@ -51,11 +68,14 @@
 //               disableElevation
 //               variant="contained"
 //               aria-label="Disabled elevation buttons"
-//               style={{ display: "flex", justifyContent: "center" }}
+//               style={{ display: 'flex', justifyContent: 'center' }}
 //             >
-//               <Button style={{ margin: 10 }} onClick={() => navigate('/employer/postjob')}>Post A Job</Button>
+//               <Button style={{ margin: 10 }} onClick={() => navigate('/employer/postjob')}>
+//                 Post A Job
+//               </Button>
 //               <Button style={{ margin: 10 }}>Find Applicants</Button>
 //             </ButtonGroup>
+            
 //           </div>
 //         </ContentBox>
 //       </VideoBackground>
@@ -65,13 +85,15 @@
 
 
 
+
+
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { useNavigate, useParams } from "react-router-dom";
-import videoSource from "../images/Indeed2.mp4";
+import { useNavigate, useParams } from 'react-router-dom';
+import videoSource from '../images/Indeed2.mp4';
 import axios from 'axios';
 
 const VideoBackground = styled(Box)(({ theme }) => ({
@@ -99,16 +121,16 @@ const ContentBox = styled(Box)(({ theme }) => ({
   color: '#fff',
 }));
 
-export default function Employer_Dashboard() {
+export default function EmployerDashboard() {
   const navigate = useNavigate();
   const { email } = useParams();
-  const [data, setData] = useState(null);
+  const [companyName, setCompanyName] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/job/company_name/${email}`);
-        setData(response.data);
+        const response = await axios.get(`http://localhost:4000/employer/company_name/${email}`);
+        setCompanyName(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -118,6 +140,11 @@ export default function Employer_Dashboard() {
       fetchData();
     }
   }, [email]);
+
+  useEffect(() => {
+    console.log('Email that is passed from login page:', email);
+    console.log('Company Name:', companyName);
+  }, [email, companyName]);
 
   return (
     <div>
@@ -133,19 +160,13 @@ export default function Employer_Dashboard() {
               disableElevation
               variant="contained"
               aria-label="Disabled elevation buttons"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{ display: 'flex', justifyContent: 'center' }}
             >
-              <Button style={{ margin: 10 }} onClick={() => navigate('/employer/postjob')}>Post A Job</Button>
-              <Button style={{ margin: 10 }}>Find Applicants</Button>
+              <Button style={{ margin: 10 }} onClick={() => navigate('/employer/postjob')}>
+                Post A Job
+              </Button>
+              <Button onClick={() => navigate(`/employer/postedjobs/${companyName}`)} style={{ margin: 10 }}>View Posted Jobs</Button>
             </ButtonGroup>
-            {data && (
-              <div>
-                <h2>Welcome to the Employer Dashboard</h2>
-                <p>Email: {email}</p>
-                <p>Company Name: {data.companyName}</p>
-                {/* ... other dashboard content */}
-              </div>
-            )}
           </div>
         </ContentBox>
       </VideoBackground>

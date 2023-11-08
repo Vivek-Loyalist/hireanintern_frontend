@@ -11,6 +11,7 @@ import Intern_Dashboard from './pages/Intern_Dashboard';
 import Employer_Dashboard from './pages/Employer_Dashboard';
 import Post_Job_Form from './pages/Post_Job_Form';
 import Apply_Job_Form from './pages/Apply_Job_Form';
+import Posted_Jobs from './pages/Posted_Jobs';
 
 
 
@@ -65,7 +66,7 @@ function App() {
 
 
     {
-      path: "/employer/dashboard",
+      path: "/employer/dashboard/:email",
       element: (
         <Employer_Dashboard />
       ),
@@ -89,9 +90,17 @@ function App() {
 
     // route to apply intern
     {
-      path: "/intern/dashboard/applyjob/:company_name",
+      path: "/intern/dashboard/applyjob/:company_name/:job_title",
       element: (
         <Apply_Job_Form />
+      ),
+    },
+
+    // route to posted jobs
+    {
+      path: "/employer/postedjobs/:company_name",
+      element: (
+        <Posted_Jobs />
       ),
     },
 
@@ -106,6 +115,8 @@ function App() {
 
             <RouterProvider router={router} />    
            
+
+           {/* <Posted_Jobs /> */}
 
 
       <LandindFooter />

@@ -11,7 +11,7 @@ import CardActions from '@mui/joy/CardActions';
 import IconButton from '@mui/joy/IconButton';
 import Typography from '@mui/joy/Typography';
 import SvgIcon from '@mui/joy/SvgIcon';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { baseURL } from '../baseURL.js';
 
@@ -20,6 +20,9 @@ import { baseURL } from '../baseURL.js';
 
 
 function BioCard() {
+
+  const { company_name } = useParams();
+    console.log(company_name);
 
   // for navigating pages
 
@@ -30,15 +33,15 @@ function BioCard() {
   const [jobs, setJobs] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`${baseURL}/job/jobdetails`)
+    axios.get(`${baseURL}/job/jobdetails/company/${company_name}`)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         setJobs(res.data);
       })
       .catch(err => {
         console.log(err);
       })
-  }, []);
+  }, [company_name]);
   console.log(jobs);
 
 
@@ -86,7 +89,7 @@ function BioCard() {
 
               <Typography level="title-sm">{card.job_location}</Typography>
 
-              <Typography level="body-md">{card.job_description}</Typography>
+              {/* <Typography level="body-md">{card.job_description}</Typography> */}
 
 
               <Box
@@ -166,8 +169,8 @@ function BioCard() {
             <CardOverflow sx={{ bgcolor: 'background.level1' }}>
               <CardActions buttonFlex="1">
                 <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
-                  {/* <Button>Apply Later</Button> */}
-                  <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}/${card.job_title}`)}>Apply</Button>
+                  {/* <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}`)}>View Applicants</Button> */}
+                  <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}`)}>View Applicants</Button>
                 </ButtonGroup>
               </CardActions>
             </CardOverflow>

@@ -48,7 +48,7 @@ function Form() {
         // });
     };
 
-    const { company_name } = useParams();
+    const { company_name , job_title} = useParams();
 
     // console.log(company_name)
 
@@ -58,6 +58,8 @@ function Form() {
             email: email,
             phone_number: phone_number,
             company_name: company_name,
+            job_title: job_title,
+
             // resume: selectedFile
         }
         axios.post(`${baseURL}/job/applyjob`, data)
