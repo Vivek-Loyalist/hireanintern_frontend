@@ -22,7 +22,6 @@ import { baseURL } from '../baseURL.js';
 function BioCard() {
 
   const { company_name } = useParams();
-    console.log(company_name);
 
   // for navigating pages
 
@@ -170,7 +169,7 @@ function BioCard() {
               <CardActions buttonFlex="1">
                 <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
                   {/* <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}`)}>View Applicants</Button> */}
-                  <Button onClick={() => navigate(`/intern/dashboard/applyjob/${card.company_name}`)}>View Applicants</Button>
+                  <Button onClick={() => navigate(`/employer/viewapplicants/${card.company_name}/${card.job_title}`)}>View Applicants</Button>
                 </ButtonGroup>
               </CardActions>
             </CardOverflow>
