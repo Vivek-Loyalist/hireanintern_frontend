@@ -173,7 +173,6 @@ function LandingHeader() {
         </Toolbar>
       </Container>
     </AppBar>
-    // sample code
   );
 }
 export default LandingHeader;
