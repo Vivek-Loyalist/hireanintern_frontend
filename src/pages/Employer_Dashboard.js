@@ -155,7 +155,7 @@ export default function EmployerDashboard() {
         <ContentBox>
           <div>
             <h1>Let's make your next great hire. Fast</h1>
-            <h5>Save time and effort in your hiring journey. Finding the best fit for the job shouldn’t be a full-time job. Indeed’s simple and powerful tools let you source, screen, and hire faster.</h5>
+            <h5>Save time and effort in your hiring journey. Finding the best fit for the job shouldn’t be a full-time job. Hire an Intern simple and powerful tools let you source, screen, and hire faster.</h5>
             <ButtonGroup
               disableElevation
               variant="contained"
@@ -165,7 +165,7 @@ export default function EmployerDashboard() {
               <Button style={{ margin: 10 }} onClick={() => navigate('/employer/postjob')}>
                 Post A Job
               </Button>
-              <Button onClick={() => navigate(`/employer/postedjobs/${companyName}`)} style={{ margin: 10 }}>View Posted Jobs</Button>
+              <Button onClick={() => navigate(`/employer/viewpostedjobs/${companyName}`)} style={{ margin: 10 }}>View Posted Jobs</Button>
             </ButtonGroup>
           </div>
         </ContentBox>
