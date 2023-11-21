@@ -81,7 +81,7 @@ export default function CustomPaginationActionsTable() {
                   {row.phone_number}
                 </TableCell>
                 <TableCell style={{ width: 160 }} align="right">
-                  {row.resume_score}
+                  {Math.round(row.resume_score)}
                 </TableCell>
               </TableRow>
             ))}

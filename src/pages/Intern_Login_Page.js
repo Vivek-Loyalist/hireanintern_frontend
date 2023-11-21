@@ -78,7 +78,9 @@ function SignInSide() {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+              // backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+              backgroundImage: 'url(https://www3.recruiter.com/recruiting/wp-content/uploads/2022/07/ai-based-resume-screening.jpg)',
+
               // backgroundRepeat: 'no-repeat',
 
 
@@ -146,9 +148,9 @@ function SignInSide() {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="http://localhost:3000/" variant="body2">
+                    {/* <Link href="http://localhost:3000/" variant="body2">
                       Forgot password?
-                    </Link>
+                    </Link> */}
                   </Grid>
                   <Grid item>
                     <Link href="/signup/intern" variant="body2">

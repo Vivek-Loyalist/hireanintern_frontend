@@ -243,7 +243,9 @@ function SignInSide() {
             sm={4}
             md={7}
             sx={{
-              backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+              // backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+              backgroundImage: 'url(https://ducknowl.com/wp-content/uploads/2023/05/candidate-screening.webp)',
+
               backgroundColor: (t) =>
                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
               backgroundSize: 'cover',
@@ -303,9 +305,9 @@ function SignInSide() {
                 </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="http://localhost:3000/" variant="body2">
+                    {/* <Link href="http://localhost:3000/" variant="body2">
                       Forgot password?
-                    </Link>
+                    </Link> */}
                   </Grid>
                   <Grid item>
                     <Link href="/signup/employer" variant="body2">

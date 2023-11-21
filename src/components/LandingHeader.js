@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = [ 'Logout'];
@@ -26,6 +27,7 @@ function LandingHeader() {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
+    window.location.href="/";
     setAnchorElUser(event.currentTarget);
   };
 
@@ -141,9 +143,11 @@ function LandingHeader() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            <Tooltip title="Open settings" >
+              <IconButton sx={{ p: 0 }}>
+              {/* <Avatar src="/broken-image.jpg" /> */}
+              <LogoutIcon onClick={handleOpenUserMenu} />
+
               </IconButton>
             </Tooltip>
             <Menu
